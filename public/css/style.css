@@ -164,6 +164,114 @@ select {
   gap: 2rem;
 }
 
+.layout-grid {
+  --gap: 1rem;
+  display: grid;
+  gap: var(--gap);
+}
+.layout-grid--columns {
+  grid-auto-flow: column;
+}
+.layout-grid--auto-fit {
+  --min: 20ch;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--min), 100%), 1fr));
+}
+.layout-grid--sidebar {
+  --sidebar-max: 20ch;
+  --content-min: 30ch;
+  grid-template-columns: fit-content(var(--sidebar-max)) minmax(min(50vw, var(--content-min)), 1fr);
+}
+.layout-grid--centered {
+  place-content: center;
+}
+.layout-grid--stacked {
+  grid-template-areas: "stack";
+  place-items: center;
+}
+.layout-grid--stacked > * {
+  grid-area: stack;
+  place-self: var(--place-self);
+  align-self: var(--align-self, var(--place-self));
+  justify-self: var(--justify-self, var(--place-self));
+}
+
+.template-dashboard {
+  display: grid;
+  grid-template-areas: "header header" "nav main" "nav footer";
+  grid-auto-rows: auto 1fr auto;
+  grid-auto-columns: 30ch 1fr;
+}
+.template-dashboard header {
+  grid-area: header;
+  padding: 1rem;
+}
+.template-dashboard header span {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+.template-dashboard nav {
+  grid-area: nav;
+  padding: 2rem;
+}
+.template-dashboard nav a {
+  color: inherit;
+}
+.template-dashboard main {
+  grid-area: main;
+  padding: 2rem;
+}
+.template-dashboard footer {
+  grid-area: footer;
+  padding: 1rem;
+  border-top: 1px solid var(--color-on-text);
+}
+
+.template-holy-grail {
+  display: grid;
+}
+.template-holy-grail header {
+  padding: 1rem;
+}
+.template-holy-grail header span {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+.template-holy-grail nav {
+  padding: 2rem;
+}
+.template-holy-grail nav a {
+  color: inherit;
+}
+.template-holy-grail main {
+  padding: 2rem;
+}
+.template-holy-grail footer {
+  padding: 1rem;
+  border-top: 1px solid var(--color-on-text);
+}
+@media (min-width: 100ch) {
+  .template-holy-grail {
+    grid-template-areas: "header header header" "nav main aside" "nav footer footer";
+    grid-auto-rows: auto 1fr auto;
+    grid-auto-columns: 30ch 1fr;
+  }
+  .template-holy-grail header {
+    grid-area: header;
+  }
+  .template-holy-grail nav {
+    grid-area: nav;
+  }
+  .template-holy-grail main {
+    grid-area: main;
+  }
+  .template-holy-grail aside {
+    grid-area: aside;
+  }
+  .template-holy-grail footer {
+    grid-area: footer;
+  }
+}
+
 body {
   background-color: #f9f9f9;
   font-family: system-ui, sans-serif;

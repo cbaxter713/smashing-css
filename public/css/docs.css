@@ -13,3 +13,18 @@
   padding: 1rem;
   text-align: center;
 }
+
+.docs--outline-children > * {
+  outline: 1px dashed red;
+}
+
+main > [class*=layout] + * {
+  margin-top: 4rem;
+}
+
+.docs-container {
+  --color: gray;
+  --height: 30vh;
+  min-height: var(--height);
+  outline: 1px dashed var(--color);
+}
